@@ -1,35 +1,28 @@
 const	BOARD_END = 100
 
 class Board {
-	constructor(player, snakeLadderMap) {
+	constructor(snakeLadderMap) {
 		this.snakeLadderMap = snakeLadderMap
-		this.player = player;
 	}
 	
-	runSteps(steps) {
-		if (withinBoard.call(this, steps)) {
-			this.player.setCurrentPosition(this.player.currentPosition + steps);
-			if (anySnakeOrLadderFound.call(this)) {
-				this.player.setCurrentPosition(this.snakeLadderMap[this.player.currentPosition])
+	nextPosition(currentPosition, steps) {
+		let newPosition = currentPosition;
+		if (withinBoard(currentPosition, steps)) {
+			newPosition += steps;
+			if (anySnakeOrLadderFound.call(this, newPosition)) {
+				newPosition = this.snakeLadderMap[newPosition]
 			}
 		}
-	}
-	
-	playerReachedHome() {
-		return this.player.currentPosition === BOARD_END;
-	}
-	
-	showPlayersCurrentPosition() {
-		this.player.showCurrentPosition()
+		return newPosition;
 	}
 }
 
-function withinBoard(steps) {
-	return this.player.currentPosition + steps <= BOARD_END;
+function withinBoard(currentPosition, steps) {
+	return currentPosition + steps <= BOARD_END;
 }
 
-function anySnakeOrLadderFound() {
-	return Object.keys(this.snakeLadderMap).includes(this.player.currentPosition + '');
+function anySnakeOrLadderFound(position) {
+	return Object.keys(this.snakeLadderMap).includes(position + '');
 }
 
 module.exports = Board;

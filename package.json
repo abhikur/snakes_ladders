@@ -5,11 +5,12 @@
   "main": "src/game.js",
   "scripts": {
     "start": "node src/game.js",
-    "test": "mocha src/__tests__"
+    "test": "mocha src/__tests__/*"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "mocha": "^8.0.1"
+    "mocha": "^8.0.1",
+    "sinon": "^9.0.2"
   }
 }
