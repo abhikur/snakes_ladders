@@ -1,0 +1,14 @@
+{
+  "name": "snakenladder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Board.js",
+  "scripts": {
+    "test": "mocha __tests__"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^8.0.1"
+  }
+}
