@@ -2,6 +2,7 @@ const Player = require('./Player');
 const Board = require('./Board');
 const readline = require('readline');
 const fs = require('fs');
+const path = require('path');
 
 const rl = readline.createInterface({
 	input: process.stdin,
@@ -9,7 +10,7 @@ const rl = readline.createInterface({
 	terminal: false
 });
 
-const snakeLadderMapping = JSON.parse(fs.readFileSync('./snake_ladder_mapping.json', 'utf-8'));
+const snakeLadderMapping = JSON.parse(fs.readFileSync(path.join(__dirname, '../config/snake_ladder_mapping.json'), 'utf-8'));
 const board = new  Board(new Player(), snakeLadderMapping);
 
 function invalidNumber(line) {

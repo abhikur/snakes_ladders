@@ -2,9 +2,10 @@
   "name": "snakenladder",
   "version": "1.0.0",
   "description": "",
-  "main": "Board.js",
+  "main": "src/game.js",
   "scripts": {
-    "test": "mocha __tests__"
+    "start": "node src/game.js",
+    "test": "mocha src/__tests__"
   },
   "author": "",
   "license": "ISC",
