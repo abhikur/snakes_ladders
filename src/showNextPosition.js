@@ -1,26 +1,29 @@
-const fs = require('fs');
-const path = require('path');
-
 const Board = require('./Board');
 const Organiser = require('./Organiser');
 const Player = require('./Player');
-const invalidNumber = require('./validators/invalidNumber');
+const File = require('./File');
+const Step = require('./Step');
 
-const step = process.argv[2]
+const inputStep = process.argv[2]
 const currentPosition = process.argv[3]
 
-const board = new Board(JSON.parse(fs.readFileSync(path.join(__dirname, '../config/snake_ladder_mapping.json'), 'utf-8')));
-const player = new Player();
-player.setCurrentPosition(+currentPosition)
-const organiser = new Organiser(board, player);
+function snakeLadderMapping() {
+	return new File('../config/snake_ladder_mapping.json').load();
+}
 
-if (invalidNumber(step)) {
-	console.log('Please enter number between 1 and 6')
-} else {
-	organiser.runSteps(+step);
+const step = new Step(inputStep);
+
+function showNextPosition() {
+	const board = new Board(snakeLadderMapping());
+	const player = new Player();
+	player.setCurrentPosition(+currentPosition)
+	const organiser = new Organiser(board, player);
+	organiser.runSteps(step.value());
 	if (organiser.playerReachedHome()) {
 		console.log('Congrats you won!')
-	} else{
+	} else {
 		organiser.showPlayersCurrentPosition();
 	}
 }
+
+step.isInvalid() ? console.log('Please enter number between 1 and 6') : showNextPosition();

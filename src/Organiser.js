@@ -5,6 +5,16 @@ class Organiser {
 		this.player = player;
 	}
 	
+	startGame(steps, stopGame) {
+		this.runSteps(steps);
+		if (this.playerReachedHome()) {
+			console.log('Congrats you won!');
+			stopGame();
+		} else {
+			this.showPlayersCurrentPosition();
+		}
+	}
+	
 	runSteps(steps) {
 		this.player.setCurrentPosition(this.board.nextPosition(this.player.currentPosition, steps))
 	}

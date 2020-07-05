@@ -1,5 +1,4 @@
 const Board = require('../Board');
-const Player = require('../Player');
 const assert = require('assert');
 
 describe('Board', () => {
