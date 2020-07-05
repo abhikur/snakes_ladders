@@ -19,3 +19,16 @@ There are some tests which are running using mocha test runner. To run the tests
 Now when packages are installed, you can run the test by :
 
 `npm run test`
+
+### Another way of running the game
+There is one file named `showNextPosition.js` which take 2 input, one is step and another is current position and shows the new position. The logic behind is completely same. Its just another way of getting the new position.
+
+To Run this file : 
+
+```bash
+node src/showNextPosition.js <steps> <currentPosition>
+```
+For example: 
+```bash
+node src/showNextPosition.js 2 5
+```
